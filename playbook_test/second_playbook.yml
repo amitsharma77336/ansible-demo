@@ -1,0 +1,22 @@
+---
+- name: Test vars functionality of ansible
+  hosts: all
+  vars_files:
+    - /home/rinkmit/ansible-demo/inventory/user_pass
+
+  vars:
+    ansible_user: ansible
+#    ansible_password: password
+
+  tasks:
+    - name: Print out th message
+      ansible.builtin.debug:
+        msg:
+          - "{{ansible_config_file}}"
+          - "{{ansible_facts}}"
+    - name: Pring out the variable from groupvars
+      ansible.builtin.debug:
+        msg:
+          # - "{{abc}}"
+          - "{{ abc[2].sharma }}"
+

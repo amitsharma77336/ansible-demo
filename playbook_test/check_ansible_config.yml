@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Check ansible configuration
+      ansible.builtin.debug:
+        msg:
+          - "{{ansible_facts}}"
+          - "{{ansible_config_file}}"
+#          - "{{inventory_file}}"
