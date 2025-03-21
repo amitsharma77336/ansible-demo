@@ -1,0 +1,23 @@
+---
+- name: This play lists the facts gathered by ansible and Cisco
+  hosts: all
+  gather_facts: true
+  tasks:
+#    - name: print ansible facts
+#      ansible.builtin.debug:
+#        msg:
+#          - "{{ ansible_facts }}"
+    
+    - name: Facts Gathered by IOS module
+      cisco.ios.ios_facts:
+        gather_subset: all
+        available_network_resources: true
+        gather_network_resources:
+          - l3_interfaces
+          - l2_interfaces
+      register: router_facts
+
+    - name: Print facts gathered by Cisco Module
+      ansible.builtin.debug:
+        msg: "{{ router_facts.ansible_facts}}"
+          

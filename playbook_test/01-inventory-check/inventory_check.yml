@@ -1,0 +1,14 @@
+---
+- name: This playbooks checks the inventory file and print builtin vars
+  hosts: routers
+  gather_facts: true
+  tasks:
+    - name: Print the message after making the connection
+      ansible.builtin.debug:
+        msg:
+          - "{{ ansible_config_file }}"
+          - "{{ ansible_host }}"
+          - "{{ ansible_facts }}"
+          - "{{ ansible_user }}"
+
+          - "{{ inventory_file }}"

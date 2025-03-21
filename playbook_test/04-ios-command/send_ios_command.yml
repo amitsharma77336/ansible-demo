@@ -1,0 +1,22 @@
+---
+- name: Check sending commands to IOS Devices
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Execute command module
+      cisco.ios.ios_command:
+        commands:
+          - show version
+          - show ip interface brief
+      register: show_command_output
+
+    - name: Print Show Version
+      ansible.builtin.debug:
+        msg:
+          - "{{ show_command_output.stdout_lines[0] }}"
+
+    - name: Print show Ingerface
+      ansible.builtin.debug:
+        msg:
+          - "{{ show_command_output.stdout_lines[1] }}"
+      

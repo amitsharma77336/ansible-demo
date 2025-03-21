@@ -1,0 +1,21 @@
+all:
+  children:
+    routers:
+      vars:
+        ansible_become: 'true'
+        ansible_become_methog: enable
+        ansible_become_password: password
+        ansible_connection: ansible.netcommon.network_cli
+        ansible_network_os: cisco.ios.ios
+        ansible_password: password
+        ansible_user: rinkmit
+      hosts:
+        r1:
+          #abc: &id001
+
+          ansible_host: 192.168.211.135
+
+        r2:
+          #abc: *id001
+          ansible_host: 192.168.211.136
+

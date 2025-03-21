@@ -1,0 +1,12 @@
+[routers]
+r1 ansible_host=192.168.211.135
+r2 ansible_host=192.168.211.136
+
+[routers:vars]
+ansible_connection=ansible.netcommon.network_cli
+ansible_network_os=cisco.ios.ios
+ansible_user=rinkmit
+ansible_password = password
+ansible_become=true
+ansible_become_password = password
+ansible_become_methog= enable
